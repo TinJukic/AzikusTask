@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		264E6CD92C29FB5F002A4209 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CD82C29FB5F002A4209 /* String+Extensions.swift */; };
+		264E6CDE2C2AAD87002A4209 /* ReposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CDD2C2AAD87002A4209 /* ReposViewController.swift */; };
+		264E6CE32C2AAF5A002A4209 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CE22C2AAF5A002A4209 /* Networking.swift */; };
+		264E6CE52C2AB01C002A4209 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CE42C2AB01C002A4209 /* NetworkRequests.swift */; };
+		264E6CE82C2AB131002A4209 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CE72C2AB131002A4209 /* DataModels.swift */; };
+		264E6CEC2C2AF6C9002A4209 /* ReposCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CEB2C2AF6C9002A4209 /* ReposCellView.swift */; };
+		264E6CEE2C2B12B7002A4209 /* RepoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CED2C2B12B7002A4209 /* RepoDetailsView.swift */; };
+		264E6CF02C2B1358002A4209 /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CEF2C2B1358002A4209 /* RepoDetailsViewController.swift */; };
+		264E6CF32C2B1743002A4209 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CF22C2B1743002A4209 /* NavigationViewController.swift */; };
 		2688F9812C29DB92001F516D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2688F9802C29DB92001F516D /* AppDelegate.swift */; };
 		2688F9832C29DB92001F516D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2688F9822C29DB92001F516D /* SceneDelegate.swift */; };
-		2688F9852C29DB92001F516D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2688F9842C29DB92001F516D /* ViewController.swift */; };
 		2688F98A2C29DB96001F516D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2688F9892C29DB96001F516D /* Assets.xcassets */; };
 		2688F98D2C29DB96001F516D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2688F98B2C29DB96001F516D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -32,10 +40,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		264E6CD82C29FB5F002A4209 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		264E6CDD2C2AAD87002A4209 /* ReposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewController.swift; sourceTree = "<group>"; };
+		264E6CE22C2AAF5A002A4209 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		264E6CE42C2AB01C002A4209 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		264E6CE72C2AB131002A4209 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		264E6CEB2C2AF6C9002A4209 /* ReposCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposCellView.swift; sourceTree = "<group>"; };
+		264E6CED2C2B12B7002A4209 /* RepoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsView.swift; sourceTree = "<group>"; };
+		264E6CEF2C2B1358002A4209 /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		264E6CF22C2B1743002A4209 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		2688F97D2C29DB92001F516D /* AzikusTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzikusTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2688F9802C29DB92001F516D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2688F9822C29DB92001F516D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2688F9842C29DB92001F516D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2688F9892C29DB96001F516D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2688F98C2C29DB96001F516D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2688F98E2C29DB96001F516D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +84,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		264E6CD72C29FB45002A4209 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CD82C29FB5F002A4209 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		264E6CDA2C29FBA8002A4209 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CE22C2AAF5A002A4209 /* Networking.swift */,
+				264E6CE42C2AB01C002A4209 /* NetworkRequests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		264E6CDB2C2AAD6C002A4209 /* Repos */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CDF2C2AAE08002A4209 /* Views */,
+				264E6CDC2C2AAD72002A4209 /* ViewControllers */,
+			);
+			path = Repos;
+			sourceTree = "<group>";
+		};
+		264E6CDC2C2AAD72002A4209 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CDD2C2AAD87002A4209 /* ReposViewController.swift */,
+				264E6CEF2C2B1358002A4209 /* RepoDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		264E6CDF2C2AAE08002A4209 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CEB2C2AF6C9002A4209 /* ReposCellView.swift */,
+				264E6CED2C2B12B7002A4209 /* RepoDetailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		264E6CE62C2AB0EA002A4209 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CE72C2AB131002A4209 /* DataModels.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		264E6CF12C2B171D002A4209 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CF22C2B1743002A4209 /* NavigationViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		2688F9742C29DB92001F516D = {
 			isa = PBXGroup;
 			children = (
@@ -89,9 +165,13 @@
 		2688F97F2C29DB92001F516D /* AzikusTask */ = {
 			isa = PBXGroup;
 			children = (
+				264E6CF12C2B171D002A4209 /* Navigation */,
+				264E6CE62C2AB0EA002A4209 /* DataModels */,
+				264E6CDB2C2AAD6C002A4209 /* Repos */,
+				264E6CDA2C29FBA8002A4209 /* Networking */,
+				264E6CD72C29FB45002A4209 /* Extensions */,
 				2688F9802C29DB92001F516D /* AppDelegate.swift */,
 				2688F9822C29DB92001F516D /* SceneDelegate.swift */,
-				2688F9842C29DB92001F516D /* ViewController.swift */,
 				2688F9892C29DB96001F516D /* Assets.xcassets */,
 				2688F98B2C29DB96001F516D /* LaunchScreen.storyboard */,
 				2688F98E2C29DB96001F516D /* Info.plist */,
@@ -229,7 +309,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2688F9852C29DB92001F516D /* ViewController.swift in Sources */,
+				264E6CE82C2AB131002A4209 /* DataModels.swift in Sources */,
+				264E6CF32C2B1743002A4209 /* NavigationViewController.swift in Sources */,
+				264E6CD92C29FB5F002A4209 /* String+Extensions.swift in Sources */,
+				264E6CEC2C2AF6C9002A4209 /* ReposCellView.swift in Sources */,
+				264E6CE52C2AB01C002A4209 /* NetworkRequests.swift in Sources */,
+				264E6CEE2C2B12B7002A4209 /* RepoDetailsView.swift in Sources */,
+				264E6CF02C2B1358002A4209 /* RepoDetailsViewController.swift in Sources */,
+				264E6CDE2C2AAD87002A4209 /* ReposViewController.swift in Sources */,
+				264E6CE32C2AAF5A002A4209 /* Networking.swift in Sources */,
 				2688F9812C29DB92001F516D /* AppDelegate.swift in Sources */,
 				2688F9832C29DB92001F516D /* SceneDelegate.swift in Sources */,
 			);
