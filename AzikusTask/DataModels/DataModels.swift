@@ -8,7 +8,7 @@
 import Foundation
 
 /// Struct with repo data
-struct RepoInfo: Codable {
+struct RepoInfo: Codable, Equatable {
     /// Repo ID
     var id: Int?
     /// Node ID
@@ -41,7 +41,7 @@ struct RepoInfo: Codable {
 }
 
 /// Information about owner of the repo
-struct Owner: Codable {
+struct Owner: Codable, Equatable {
     /// GitHub organisation
     var login: String?
     /// Repo owner ID
