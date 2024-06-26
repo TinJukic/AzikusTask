@@ -60,6 +60,19 @@ class ReposCellView: UITableViewCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        generateCellElements()
+        styleCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Helper functions
+
+extension ReposCellView {
+    private func generateCellElements() {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(avatarImageView)
 
@@ -78,18 +91,8 @@ class ReposCellView: UITableViewCell {
             nameLabel.topAnchor.constraint(equalTo: nameLabel.superview!.topAnchor, constant: .sideConstant),
             nameLabel.bottomAnchor.constraint(equalTo: nameLabel.superview!.bottomAnchor, constant: -.sideConstant),
         ])
-        
-        styleCell()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Helper functions
-
-extension ReposCellView {
     private func styleCell() {
         if let repoInfo {
             avatarImageView.load(urlString: repoInfo.owner?.avatarURL ?? "")

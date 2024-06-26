@@ -65,6 +65,7 @@ extension ReposViewController: UITableViewDelegate {
         let viewController = RepoDetailsViewController()
         viewController.setRepoInfo(repoInfo: repos[indexPath.row])
         navigationController?.pushViewController(viewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -89,14 +90,13 @@ extension ReposViewController {
     private func refreshData() {
         // reset the counter and repos list
         currentPage = 1
-        repos = []
         
         // the code is copied, because of the refresh control,
         // which needs to be stopped after the refresh is done
         network.fetchRepos(pageNumber: currentPage) { [weak self] newRepos in
             guard let self = self, let newRepos else { return }
             
-            repos.append(contentsOf: newRepos)
+            repos = newRepos
             DispatchQueue.main.async {
                 self.currentPage += 1
                 self.refreshControl.endRefreshing()
