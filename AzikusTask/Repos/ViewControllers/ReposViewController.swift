@@ -21,6 +21,9 @@ class ReposViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Repositories"
+        navigationItem.largeTitleDisplayMode = .automatic
+        
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         tableView.dataSource = self
