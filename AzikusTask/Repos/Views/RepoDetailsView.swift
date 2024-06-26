@@ -36,7 +36,7 @@ extension CGFloat {
     fileprivate static let imageSize = 100.0
     fileprivate static let fontSize = 20.0
     fileprivate static let sideConstant = 10.0
-    fileprivate static let elememtsConstant = 20.0
+    fileprivate static let elementsConstant = 20.0
     
 }
 
@@ -53,10 +53,18 @@ class RepoDetailsView: UIView {
         }
     }
     
+    // view elements
+    private let avatarImageView = UIImageView()
+    private let nameLabel = UILabel()
+    private let fullNameLabel = UILabel()
+    private let nodeIdLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let linkButton = UIButton()
+    
     init() {
         super.init(frame: .zero)
-        
         backgroundColor = .white
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -75,39 +83,46 @@ extension RepoDetailsView: RepoDetailsViewProtocol {
 // MARK: - Helper functions
 
 extension RepoDetailsView {
-    private func configureView() {
-        guard let repoInfo else { return }
-        
-        let avatarImageView = UIImageView()
-        avatarImageView.load(urlString: repoInfo.owner?.avatarURL ?? "")
+    private func setupViews() {
         avatarImageView.roundedAvatar()
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(avatarImageView)
         
-        let nameTextView = UITextView()
-        nameTextView.text = repoInfo.name
-        nameTextView.font = .boldSystemFont(ofSize: .fontSize)
-        nameTextView.textAlignment = .center
-        nameTextView.backgroundColor = .clear
-        nameTextView.isScrollEnabled = false
-        nameTextView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        nameTextView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        nameTextView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(nameTextView)
+        nameLabel.font = .boldSystemFont(ofSize: .fontSize)
+        nameLabel.textAlignment = .center
+        nameLabel.backgroundColor = .clear
+        nameLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        nameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(nameLabel)
         
-        let descriptionTextView = UITextView()
-        descriptionTextView.text = repoInfo.description
-        descriptionTextView.font = .systemFont(ofSize: .fontSize)
-        descriptionTextView.backgroundColor = .clear
-        descriptionTextView.isScrollEnabled = false
-        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(descriptionTextView)
+        fullNameLabel.font = .systemFont(ofSize: .fontSize)
+        fullNameLabel.textAlignment = .center
+        fullNameLabel.backgroundColor = .clear
+        fullNameLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        fullNameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(fullNameLabel)
         
-        let linkButton = UIButton()
+        nodeIdLabel.font = .systemFont(ofSize: .fontSize)
+        nodeIdLabel.textAlignment = .center
+        nodeIdLabel.backgroundColor = .clear
+        nodeIdLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        nodeIdLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        nodeIdLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(nodeIdLabel)
+        
+        descriptionLabel.font = .systemFont(ofSize: .fontSize)
+        descriptionLabel.backgroundColor = .clear
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(descriptionLabel)
+        
         linkButton.backgroundColor = .systemGreen
         linkButton.tintColor = .black
         linkButton.setTitle("Go to repository", for: .normal)
-        linkButton.addTarget(self, action: #selector(linkButtonHandler), for: .touchUpInside)
+        linkButton.layer.cornerRadius = 5
+        linkButton.layer.borderWidth = 0
         linkButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(linkButton)
         
@@ -118,25 +133,41 @@ extension RepoDetailsView {
             avatarImageView.widthAnchor.constraint(equalToConstant: .imageSize),
             avatarImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            nameTextView.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: .elememtsConstant),
-            nameTextView.centerXAnchor.constraint(equalTo: nameTextView.superview!.centerXAnchor),
-            nameTextView.centerYAnchor.constraint(equalTo: nameTextView.superview!.centerYAnchor),
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: .elementsConstant),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
             
-            descriptionTextView.leadingAnchor.constraint(equalTo: descriptionTextView.superview!.safeAreaLayoutGuide.leadingAnchor, constant: .sideConstant),
-            descriptionTextView.trailingAnchor.constraint(equalTo: descriptionTextView.superview!.safeAreaLayoutGuide.trailingAnchor, constant: -.sideConstant),
-            descriptionTextView.topAnchor.constraint(equalTo: nameTextView.bottomAnchor, constant: .elememtsConstant),
-//            descriptionTextView.bottomAnchor.constraint(lessThanOrEqualTo: descriptionTextView.superview!.safeAreaLayoutGuide.bottomAnchor, constant: -.sideConstant),
+            fullNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .elementsConstant),
+            fullNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
+            fullNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
             
-            linkButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: .elememtsConstant),
-            linkButton.bottomAnchor.constraint(equalTo: linkButton.superview!.safeAreaLayoutGuide.bottomAnchor, constant: -.sideConstant),
+            nodeIdLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: .elementsConstant),
+            nodeIdLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
+            nodeIdLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
+            
+            descriptionLabel.leadingAnchor.constraint(equalTo: descriptionLabel.superview!.safeAreaLayoutGuide.leadingAnchor, constant: .sideConstant),
+            descriptionLabel.trailingAnchor.constraint(equalTo: descriptionLabel.superview!.safeAreaLayoutGuide.trailingAnchor, constant: -.sideConstant),
+            descriptionLabel.topAnchor.constraint(equalTo: nodeIdLabel.bottomAnchor, constant: 2 * .elementsConstant),
+            
+            linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 3 * .elementsConstant),
+            linkButton.bottomAnchor.constraint(lessThanOrEqualTo: linkButton.superview!.safeAreaLayoutGuide.bottomAnchor, constant: -.sideConstant),
             linkButton.centerXAnchor.constraint(equalTo: linkButton.superview!.centerXAnchor),
         ])
     }
     
+    private func configureView() {
+        guard let repoInfo else { return }
+        
+        avatarImageView.load(urlString: repoInfo.owner?.avatarURL ?? "")
+        nameLabel.text = repoInfo.name
+        fullNameLabel.text = repoInfo.fullName
+        nodeIdLabel.text = repoInfo.nodeId
+        descriptionLabel.text = repoInfo.description
+        linkButton.addTarget(self, action: #selector(linkButtonHandler), for: .touchUpInside)
+    }
+    
     @objc
     private func linkButtonHandler() {
-        print("Button clicked")
-        
         if let url = URL(string: repoInfo?.htmlURL ?? "") {
             let application = UIApplication.shared
             application.open(url, options: [:], completionHandler: nil)

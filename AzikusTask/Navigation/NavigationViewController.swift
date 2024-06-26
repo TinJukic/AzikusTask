@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Enables pushing new view controllers on the screen
 class NavigationViewController: UINavigationController {
     override func loadView() {
         super.loadView()
