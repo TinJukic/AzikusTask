@@ -34,5 +34,6 @@ class RepoDetailsViewController: UIViewController {
 extension RepoDetailsViewController {
     func setRepoInfo(repoInfo: RepoInfo) {
         repoView.setRepoInfo(repoInfo: repoInfo)
+        navigationItem.title = repoInfo.name ?? ""
     }
 }

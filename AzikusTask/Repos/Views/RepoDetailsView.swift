@@ -36,8 +36,16 @@ extension CGFloat {
     fileprivate static let imageSize = 100.0
     fileprivate static let fontSize = 20.0
     fileprivate static let sideConstant = 10.0
-    fileprivate static let elementsConstant = 20.0
+    fileprivate static let elementsConstant = 30.0
+    fileprivate static let buttonPadding = 5.0
     
+}
+
+extension UIStackView {
+    fileprivate func configureText(withText text: String) {
+        let label = arrangedSubviews[1] as! UILabel
+        label.text = text
+    }
 }
 
 /// Enables repo details transfer
@@ -55,10 +63,9 @@ class RepoDetailsView: UIView {
     
     // view elements
     private let avatarImageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let fullNameLabel = UILabel()
-    private let nodeIdLabel = UILabel()
-    private let descriptionLabel = UILabel()
+    private var fullNameStackView: UIStackView?
+    private var nodeIdStackView: UIStackView?
+    private var descriptionStackView: UIStackView?
     private let linkButton = UIButton()
     
     init() {
@@ -83,47 +90,30 @@ extension RepoDetailsView: RepoDetailsViewProtocol {
 // MARK: - Helper functions
 
 extension RepoDetailsView {
+    /// Generates initial view elements
     private func setupViews() {
         avatarImageView.roundedAvatar()
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(avatarImageView)
         
-        nameLabel.font = .boldSystemFont(ofSize: .fontSize)
-        nameLabel.textAlignment = .center
-        nameLabel.backgroundColor = .clear
-        nameLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        nameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(nameLabel)
+        fullNameStackView = generateStackView(title: "Full name")
+        fullNameStackView?.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(fullNameStackView!)
         
-        fullNameLabel.font = .systemFont(ofSize: .fontSize)
-        fullNameLabel.textAlignment = .center
-        fullNameLabel.backgroundColor = .clear
-        fullNameLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        fullNameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(fullNameLabel)
+        nodeIdStackView = generateStackView(title: "Node ID")
+        nodeIdStackView?.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(nodeIdStackView!)
         
-        nodeIdLabel.font = .systemFont(ofSize: .fontSize)
-        nodeIdLabel.textAlignment = .center
-        nodeIdLabel.backgroundColor = .clear
-        nodeIdLabel.numberOfLines = 0
-        nodeIdLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        nodeIdLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        nodeIdLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(nodeIdLabel)
-        
-        descriptionLabel.font = .systemFont(ofSize: .fontSize)
-        descriptionLabel.backgroundColor = .clear
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(descriptionLabel)
+        descriptionStackView = generateStackView(title: "Node description")
+        descriptionStackView?.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(descriptionStackView!)
         
         linkButton.backgroundColor = .systemGreen
         linkButton.tintColor = .black
         linkButton.setTitle("Go to repository", for: .normal)
         linkButton.layer.cornerRadius = 5
         linkButton.layer.borderWidth = 0
+        linkButton.contentEdgeInsets = .init(top: 10, left: 20, bottom: 10, right: 20)
         linkButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(linkButton)
         
@@ -134,36 +124,32 @@ extension RepoDetailsView {
             avatarImageView.widthAnchor.constraint(equalToConstant: .imageSize),
             avatarImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: .elementsConstant),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
+            fullNameStackView!.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: .elementsConstant),
+            fullNameStackView!.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
+            fullNameStackView!.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
             
-            fullNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .elementsConstant),
-            fullNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
-            fullNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
+            nodeIdStackView!.topAnchor.constraint(equalTo: fullNameStackView!.bottomAnchor, constant: .elementsConstant),
+            nodeIdStackView!.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
+            nodeIdStackView!.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
             
-            nodeIdLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: .elementsConstant),
-            nodeIdLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .sideConstant),
-            nodeIdLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.sideConstant),
+            descriptionStackView!.leadingAnchor.constraint(equalTo: descriptionStackView!.superview!.safeAreaLayoutGuide.leadingAnchor, constant: .sideConstant),
+            descriptionStackView!.trailingAnchor.constraint(equalTo: descriptionStackView!.superview!.safeAreaLayoutGuide.trailingAnchor, constant: -.sideConstant),
+            descriptionStackView!.topAnchor.constraint(equalTo: nodeIdStackView!.bottomAnchor, constant: .elementsConstant),
             
-            descriptionLabel.leadingAnchor.constraint(equalTo: descriptionLabel.superview!.safeAreaLayoutGuide.leadingAnchor, constant: .sideConstant),
-            descriptionLabel.trailingAnchor.constraint(equalTo: descriptionLabel.superview!.safeAreaLayoutGuide.trailingAnchor, constant: -.sideConstant),
-            descriptionLabel.topAnchor.constraint(equalTo: nodeIdLabel.bottomAnchor, constant: 2 * .elementsConstant),
-            
-            linkButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 3 * .elementsConstant),
+            linkButton.topAnchor.constraint(equalTo: descriptionStackView!.bottomAnchor, constant: 3 * .elementsConstant),
             linkButton.bottomAnchor.constraint(lessThanOrEqualTo: linkButton.superview!.safeAreaLayoutGuide.bottomAnchor, constant: -.sideConstant),
             linkButton.centerXAnchor.constraint(equalTo: linkButton.superview!.centerXAnchor),
         ])
     }
     
+    /// Configures view elements with passed data
     private func configureView() {
         guard let repoInfo else { return }
         
         avatarImageView.load(urlString: repoInfo.owner?.avatarURL ?? "")
-        nameLabel.text = repoInfo.name
-        fullNameLabel.text = repoInfo.fullName
-        nodeIdLabel.text = repoInfo.nodeId
-        descriptionLabel.text = repoInfo.description
+        fullNameStackView?.configureText(withText: repoInfo.fullName ?? "")
+        nodeIdStackView?.configureText(withText: repoInfo.nodeId ?? "")
+        descriptionStackView?.configureText(withText: repoInfo.description ?? "")
         linkButton.addTarget(self, action: #selector(linkButtonHandler), for: .touchUpInside)
     }
     
@@ -173,5 +159,26 @@ extension RepoDetailsView {
             let application = UIApplication.shared
             application.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    /// Used for generating stack views
+    private func generateStackView(title: String, text: String = "") -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = .sideConstant
+        
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = .boldSystemFont(ofSize: .fontSize)
+        stackView.addArrangedSubview(titleLabel)
+        
+        let textLabel = UILabel()
+        textLabel.text = text
+        textLabel.numberOfLines = 0
+        textLabel.font = .systemFont(ofSize: .fontSize)
+        stackView.addArrangedSubview(textLabel)
+        
+        return stackView
     }
 }
