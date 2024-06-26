@@ -107,6 +107,7 @@ extension RepoDetailsView {
         nodeIdLabel.font = .systemFont(ofSize: .fontSize)
         nodeIdLabel.textAlignment = .center
         nodeIdLabel.backgroundColor = .clear
+        nodeIdLabel.numberOfLines = 0
         nodeIdLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         nodeIdLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         nodeIdLabel.translatesAutoresizingMaskIntoConstraints = false

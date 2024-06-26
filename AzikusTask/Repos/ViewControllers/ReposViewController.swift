@@ -38,8 +38,7 @@ class ReposViewController: UIViewController {
 
 extension ReposViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(repos)
-        return repos.count
+        repos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
