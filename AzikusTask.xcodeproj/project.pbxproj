@@ -16,6 +16,7 @@
 		264E6CEE2C2B12B7002A4209 /* RepoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CED2C2B12B7002A4209 /* RepoDetailsView.swift */; };
 		264E6CF02C2B1358002A4209 /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CEF2C2B1358002A4209 /* RepoDetailsViewController.swift */; };
 		264E6CF32C2B1743002A4209 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CF22C2B1743002A4209 /* NavigationViewController.swift */; };
+		264E6CFA2C2C5830002A4209 /* AzikusTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E6CF92C2C5830002A4209 /* AzikusTaskTests.swift */; };
 		2688F9812C29DB92001F516D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2688F9802C29DB92001F516D /* AppDelegate.swift */; };
 		2688F9832C29DB92001F516D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2688F9822C29DB92001F516D /* SceneDelegate.swift */; };
 		2688F98A2C29DB96001F516D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2688F9892C29DB96001F516D /* Assets.xcassets */; };
@@ -24,13 +25,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		2688F9942C29DB97001F516D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2688F9752C29DB92001F516D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2688F97C2C29DB92001F516D;
-			remoteInfo = AzikusTask;
-		};
-		2688F99E2C29DB97001F516D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2688F9752C29DB92001F516D /* Project object */;
 			proxyType = 1;
@@ -49,6 +43,7 @@
 		264E6CED2C2B12B7002A4209 /* RepoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsView.swift; sourceTree = "<group>"; };
 		264E6CEF2C2B1358002A4209 /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		264E6CF22C2B1743002A4209 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		264E6CF92C2C5830002A4209 /* AzikusTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzikusTaskTests.swift; sourceTree = "<group>"; };
 		2688F97D2C29DB92001F516D /* AzikusTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AzikusTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2688F9802C29DB92001F516D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2688F9822C29DB92001F516D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +51,6 @@
 		2688F98C2C29DB96001F516D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2688F98E2C29DB96001F516D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2688F9932C29DB97001F516D /* AzikusTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzikusTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2688F99D2C29DB97001F516D /* AzikusTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AzikusTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +62,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2688F9902C29DB97001F516D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2688F99A2C29DB97001F516D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,10 +131,19 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		264E6CF42C2C5479002A4209 /* AzikusTaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				264E6CF92C2C5830002A4209 /* AzikusTaskTests.swift */,
+			);
+			path = AzikusTaskTests;
+			sourceTree = "<group>";
+		};
 		2688F9742C29DB92001F516D = {
 			isa = PBXGroup;
 			children = (
 				2688F97F2C29DB92001F516D /* AzikusTask */,
+				264E6CF42C2C5479002A4209 /* AzikusTaskTests */,
 				2688F97E2C29DB92001F516D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,7 +153,6 @@
 			children = (
 				2688F97D2C29DB92001F516D /* AzikusTask.app */,
 				2688F9932C29DB97001F516D /* AzikusTaskTests.xctest */,
-				2688F99D2C29DB97001F516D /* AzikusTaskUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,24 +212,6 @@
 			productReference = 2688F9932C29DB97001F516D /* AzikusTaskTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2688F99C2C29DB97001F516D /* AzikusTaskUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2688F9AD2C29DB97001F516D /* Build configuration list for PBXNativeTarget "AzikusTaskUITests" */;
-			buildPhases = (
-				2688F9992C29DB97001F516D /* Sources */,
-				2688F99A2C29DB97001F516D /* Frameworks */,
-				2688F99B2C29DB97001F516D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2688F99F2C29DB97001F516D /* PBXTargetDependency */,
-			);
-			name = AzikusTaskUITests;
-			productName = AzikusTaskUITests;
-			productReference = 2688F99D2C29DB97001F516D /* AzikusTaskUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -250,10 +227,7 @@
 					};
 					2688F9922C29DB97001F516D = {
 						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = 2688F97C2C29DB92001F516D;
-					};
-					2688F99C2C29DB97001F516D = {
-						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 						TestTargetID = 2688F97C2C29DB92001F516D;
 					};
 				};
@@ -273,7 +247,6 @@
 			targets = (
 				2688F97C2C29DB92001F516D /* AzikusTask */,
 				2688F9922C29DB97001F516D /* AzikusTaskTests */,
-				2688F99C2C29DB97001F516D /* AzikusTaskUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,13 +262,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2688F9912C29DB97001F516D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2688F99B2C29DB97001F516D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,13 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2688F9992C29DB97001F516D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				264E6CFA2C2C5830002A4209 /* AzikusTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,11 +304,6 @@
 			isa = PBXTargetDependency;
 			target = 2688F97C2C29DB92001F516D /* AzikusTask */;
 			targetProxy = 2688F9942C29DB97001F516D /* PBXContainerItemProxy */;
-		};
-		2688F99F2C29DB97001F516D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2688F97C2C29DB92001F516D /* AzikusTask */;
-			targetProxy = 2688F99E2C29DB97001F516D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -540,6 +495,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -548,6 +504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jukic.tin.AzikusTaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AzikusTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AzikusTask";
@@ -559,6 +516,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -570,40 +528,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AzikusTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AzikusTask";
-			};
-			name = Release;
-		};
-		2688F9AE2C29DB97001F516D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jukic.tin.AzikusTaskUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AzikusTask;
-			};
-			name = Debug;
-		};
-		2688F9AF2C29DB97001F516D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jukic.tin.AzikusTaskUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AzikusTask;
 			};
 			name = Release;
 		};
@@ -633,15 +557,6 @@
 			buildConfigurations = (
 				2688F9AB2C29DB97001F516D /* Debug */,
 				2688F9AC2C29DB97001F516D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2688F9AD2C29DB97001F516D /* Build configuration list for PBXNativeTarget "AzikusTaskUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2688F9AE2C29DB97001F516D /* Debug */,
-				2688F9AF2C29DB97001F516D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
