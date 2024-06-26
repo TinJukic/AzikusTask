@@ -34,7 +34,6 @@ protocol NetworkingProtocol {
 class Networking: NetworkingProtocol {
     // attributes necessary for pagination
     private var isFetching = false
-    private var currentPage = 1
     private var hasNext = true
     
     /// Private init for singleton pattern
@@ -77,7 +76,6 @@ class Networking: NetworkingProtocol {
             var value: T!  // decoded data
             do {
                 value = try JSONDecoder().decode(T.self, from: data)
-                self.currentPage += 1
             } catch let jsonError as NSError {
                 completionHandler(.failure(.dataDecodingError(jsonError.localizedDescription)))
                 return
