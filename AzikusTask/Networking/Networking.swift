@@ -67,6 +67,8 @@ class Networking: NetworkingProtocol {
                 return
             }
             
+            self.parseLinkHeader(httpResponse: httpResponse)
+            
             guard let data else {
                 completionHandler(.failure(.noDataError))
                 return
@@ -96,7 +98,7 @@ class Networking: NetworkingProtocol {
 
 extension Networking {
     private func parseLinkHeader(httpResponse: HTTPURLResponse) {
-        guard let linkHeader = httpResponse.allHeaderFields["Link"] as? String else {
+        guard let linkHeader = httpResponse.value(forHTTPHeaderField: "link") else {
             hasNext = false
             return
         }
@@ -105,7 +107,7 @@ extension Networking {
         for link in links {
             _ = link[0].trimmingCharacters(in: CharacterSet(charactersIn: " <>"))
             let relPart = link[1].trimmingCharacters(in: CharacterSet(charactersIn: " \""))
-            if relPart == "rel=\"next\"" {
+            if relPart == "rel=\"next" {
                 hasNext = true
                 return
             }
