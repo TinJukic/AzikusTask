@@ -24,7 +24,9 @@ protocol NetworkingProtocol {
         completionHandler: @escaping(Result<T, NetworkingErrors>
     ) -> Void) -> Void
     
+    /// Checks whether more data could be loaded
     /// Returns true if more data could be loaded, false otherwise
+    /// Page address is parsed, as described here: "https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#about-pagination"
     func hasMore() -> Bool
 }
 

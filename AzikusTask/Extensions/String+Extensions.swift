@@ -8,5 +8,5 @@
 import Foundation
 
 extension String {
-    static var APILink = "https://api.github.com/orgs/square/repos"
+    static var APILink = "https://api.github.com/orgs/square/repos?page="
 }

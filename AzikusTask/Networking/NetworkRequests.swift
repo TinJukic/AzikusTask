@@ -10,7 +10,8 @@ import Foundation
 /// Interface for network requests
 protocol NetworkRequestsProtocol {
     /// Fetctes all repos from URL
-    func fetchRepos(completionHandler: @escaping([RepoInfo]?) -> Void) -> Void
+    /// - pageNumber: index of the desired page
+    func fetchRepos(pageNumber: Int, completionHandler: @escaping([RepoInfo]?) -> Void) -> Void
 }
 
 /// All network requests implemented
@@ -25,8 +26,8 @@ class NetworkRequests: NetworkRequestsProtocol {
     
     private let networking = Networking.shared
     
-    func fetchRepos(completionHandler: @escaping([RepoInfo]?) -> Void) {
-        guard let reposURL = URL(string: .APILink) else { return }
+    func fetchRepos(pageNumber: Int, completionHandler: @escaping([RepoInfo]?) -> Void) {
+        guard let reposURL = URL(string: .APILink + String(pageNumber)) else { return }
         
         var reposRequest = URLRequest(url: reposURL)
         reposRequest.httpMethod = "GET"
