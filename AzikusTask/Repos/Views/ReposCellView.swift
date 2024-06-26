@@ -36,7 +36,7 @@ extension CGFloat {
     fileprivate static let imageSize = 50.0
     fileprivate static let fontSize = 20.0
     fileprivate static let sideConstant = 10.0
-    fileprivate static let elememtsConstant = 20.0
+    fileprivate static let elementsConstant = 20.0
     
 }
 
@@ -52,19 +52,19 @@ class ReposCellView: UITableViewCell {
     
     // styling elements
     private let avatarImageView: UIImageView
-    private let nameTextView: UITextView
+    private let nameLabel: UILabel
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         avatarImageView = UIImageView()
-        nameTextView = UITextView()
+        nameLabel = UILabel()
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(avatarImageView)
 
-        nameTextView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(nameTextView)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(nameLabel)
         
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: avatarImageView.superview!.leadingAnchor, constant: .sideConstant),
@@ -73,10 +73,10 @@ class ReposCellView: UITableViewCell {
             avatarImageView.heightAnchor.constraint(equalToConstant: .imageSize),
             avatarImageView.widthAnchor.constraint(equalToConstant: .imageSize),
             
-            nameTextView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: .elememtsConstant),
-            nameTextView.trailingAnchor.constraint(equalTo: nameTextView.superview!.trailingAnchor, constant: -.sideConstant),
-            nameTextView.topAnchor.constraint(equalTo: nameTextView.superview!.topAnchor, constant: .sideConstant),
-            nameTextView.bottomAnchor.constraint(equalTo: nameTextView.superview!.bottomAnchor, constant: -.sideConstant),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: .elementsConstant),
+            nameLabel.trailingAnchor.constraint(equalTo: nameLabel.superview!.trailingAnchor, constant: -.sideConstant),
+            nameLabel.topAnchor.constraint(equalTo: nameLabel.superview!.topAnchor, constant: .sideConstant),
+            nameLabel.bottomAnchor.constraint(equalTo: nameLabel.superview!.bottomAnchor, constant: -.sideConstant),
         ])
         
         styleCell()
@@ -93,14 +93,14 @@ extension ReposCellView {
     private func styleCell() {
         if let repoInfo {
             avatarImageView.load(urlString: repoInfo.owner?.avatarURL ?? "")
-            nameTextView.text = repoInfo.name
+            nameLabel.text = repoInfo.name
         } else {
             avatarImageView.tintColor = .systemGreen
-            nameTextView.text = "Not available"
+            nameLabel.text = "Not available"
         }
         
         avatarImageView.roundedAvatar()
-        nameTextView.font = .boldSystemFont(ofSize: .fontSize)
-        nameTextView.backgroundColor = .clear
+        nameLabel.font = .boldSystemFont(ofSize: .fontSize)
+        nameLabel.backgroundColor = .clear
     }
 }
