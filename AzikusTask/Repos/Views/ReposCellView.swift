@@ -53,10 +53,12 @@ class ReposCellView: UITableViewCell {
     // styling elements
     private let avatarImageView: UIImageView
     private let nameLabel: UILabel
+    private let descriptionLabel: UILabel
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         avatarImageView = UIImageView()
         nameLabel = UILabel()
+        descriptionLabel = UILabel()
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -79,17 +81,26 @@ extension ReposCellView {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(nameLabel)
         
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(descriptionLabel)
+        
         NSLayoutConstraint.activate([
+            // name, description, image
+            nameLabel.leadingAnchor.constraint(equalTo: nameLabel.superview!.leadingAnchor, constant: .sideConstant),
+            nameLabel.trailingAnchor.constraint(equalTo: nameLabel.superview!.trailingAnchor, constant: -.sideConstant),
+            nameLabel.topAnchor.constraint(equalTo: nameLabel.superview!.topAnchor, constant: .sideConstant),
+            
+            descriptionLabel.leadingAnchor.constraint(equalTo: descriptionLabel.superview!.leadingAnchor, constant: .sideConstant),
+            descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: descriptionLabel.superview!.trailingAnchor, constant: -.sideConstant),
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: .elementsConstant),
+            descriptionLabel.widthAnchor.constraint(lessThanOrEqualToConstant: bounds.width * 0.4),  // max width = 40% of the cell width
+            
             avatarImageView.leadingAnchor.constraint(equalTo: avatarImageView.superview!.leadingAnchor, constant: .sideConstant),
-            avatarImageView.topAnchor.constraint(equalTo: avatarImageView.superview!.topAnchor, constant: .sideConstant),
+            avatarImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: .elementsConstant),
             avatarImageView.bottomAnchor.constraint(equalTo: avatarImageView.superview!.bottomAnchor, constant: -.sideConstant),
             avatarImageView.heightAnchor.constraint(equalToConstant: .imageSize),
             avatarImageView.widthAnchor.constraint(equalToConstant: .imageSize),
-            
-            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: .elementsConstant),
-            nameLabel.trailingAnchor.constraint(equalTo: nameLabel.superview!.trailingAnchor, constant: -.sideConstant),
-            nameLabel.topAnchor.constraint(equalTo: nameLabel.superview!.topAnchor, constant: .sideConstant),
-            nameLabel.bottomAnchor.constraint(equalTo: nameLabel.superview!.bottomAnchor, constant: -.sideConstant),
         ])
     }
     
@@ -97,9 +108,11 @@ extension ReposCellView {
         if let repoInfo {
             avatarImageView.load(urlString: repoInfo.owner?.avatarURL ?? "")
             nameLabel.text = repoInfo.name
+            descriptionLabel.text = repoInfo.description
         } else {
             avatarImageView.tintColor = .systemGreen
             nameLabel.text = "Not available"
+            descriptionLabel.text = "Not available"
         }
         
         avatarImageView.roundedAvatar()
