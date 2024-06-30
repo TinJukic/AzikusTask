@@ -54,7 +54,7 @@ Unit tests were implemented to verify the functionality of the networking layer.
 
 Contains list of all repositories displayed using table view. All elements can be selected, after which detail screen displays. Also, pull down to refresh has also been implemented.
 
-![alt text](image.png)
+![alt text](image-3.png)
 
 ### Details screen
 
@@ -62,3 +62,18 @@ Details screen contains the owner avatar, name, full name, node id and a button,
 When back button is pressed, user is returned to main screen.
 
 ![alt text](image-1.png)
+
+### Reload on main screen
+
+If initial data could not be loaded, there will be a reload button present. When user presses the reload button, the app will try to reload the initial data. Reload button will be present for as long as the inital data could not be loaded.
+
+![alt text](image-2.png)
+
+### Loading indicator and reload button on the bottom of the table view
+
+When user scrolls to the bottom of the table view, the app will try to load more data. If the data could not be loaded, reload button will appear. When user presses the reload button, the will try to load more data, from the last index.
+
+![alt text](image-4.png)
+![alt text](image-5.png)
+
+**Note:** It should not be possible to load same data multiple times.
